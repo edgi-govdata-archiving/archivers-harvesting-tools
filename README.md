@@ -57,6 +57,4 @@ Each tool should:
 * set relevant global variables `path` and `???` in an immediately obvious way at the top of the script, or should provide an obvious way to set those variable through CLI arguments.
 * write all harvested data to a `../data` directory
 
-I guess it would be cool if tools ALL read the relevant variables from a `paths.txt` or `url.txt` file. Then potentially users wouldn't have to modify the tools at all -- the `zip starter` could write the URL to the appropriate location, and the user could immediately run the script. 
-
 
