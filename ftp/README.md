@@ -14,3 +14,6 @@ Additional options are available for authentication and more. See help:
 
 ## Dependencies
 Requires Python 3. 
+
+## Issues
+Should be modified to write to `../data` by default.
