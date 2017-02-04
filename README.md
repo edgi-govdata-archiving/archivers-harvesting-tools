@@ -37,6 +37,11 @@ The last resort of harvesting should be to drive it with a full web browser. It 
 
 For search results from large document sets, you may need to do more sophisticated "scraping" and "crawling" -- check out tools built at previous events such as the [EIS WARC archiver](https://github.com/edgi-govdata-archiving/eis-WARC-archiver) or the [EPA Search Utils](https://github.com/edgi-govdata-archiving/epa-search-utils) for ideas on how to proceed.
 
+### [Explore Other Tools](./utils)
+
+the `utils` directory is for scripts that have been useful in the past but may not have very general application. But you still might find something youu like!
+
+
 ### API scrape / Custom Solution
 
 If you encounter an API, chances are you'll have to build some sort of custom solution, or investigate a social angle. For example: asking someone with greater access for a database dump. Be sure to include your ocode in the `tools` directory of your zipfile, and if there is any likelihood of general application, please add to this repo. 
