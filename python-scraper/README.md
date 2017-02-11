@@ -40,7 +40,7 @@ export AWS_SESSION_TOKEN=CCCCCCCCC
 
 * Upload to S3 (`aws` should already be installed from the `requirements.txt`)
 ```
-aws s3 cp output.zip s3://drp-upload/remote/68D7CFD9-F816-4601-8244-20A3BF44B50D.zip --region us-east-1
+aws s3 cp output.zip s3://drp-upload/remote/ADD_UUID_HERE.zip --region us-east-1
 ```
 
 ## How to get Selenium working
