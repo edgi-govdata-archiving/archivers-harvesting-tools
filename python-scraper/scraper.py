@@ -1,62 +1,77 @@
 #! /usr/bin/env python3
+import re, os, requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 # Erase the below and write a short summary of what you're scraping
 description = """
 Description:
-This script pulls scrapes NOAA Quality Controlled Datasets from:
-https://www.ncdc.noaa.gov/crn/qcdatasets.html
+Download all the presentations for the 2015 AMS 95TH ANNUAL MEETING
+http://www.goes-r.gov/users/2015-01-ams.html
 """
 
-manpage = """
-This is diafygi's scraping script for the 2017 DataRescueSFBay event.
-https://github.com/DataRescueSFBay/DataRescueSFBay-Event
-https://github.com/edgi-govdata-archiving/harvesting-tools
--------
-License:
-GPLv3
--------
-Dependencies:
-pip install selenium==3.0.2 beautifulsoup4==4.5.3 lxml==3.7.2 pdfminer.six==20160614
--------
-Command:
-python3 datarescue_script --output ../data/
-"""
-DEFAULT_OUTPUT_DIR = "../data/"
-
-def main(output_dir=DEFAULT_OUTPUT_DIR):
+def main(output_dir):
     """
-    This is where you write your scraping scripts. There's a bunch of commented
+    This is where you write your scraping scripts. Belowe are some commented
     out sections that have example scripts to get started for various types of
     situations. Just uncomment the section that you need and start coding!
     """
+
     #######################################
     ## Html parsing using beautifulsoup4 ##
     #######################################
-    # open a webpage
-    # parse out the a link via css selectors
-    # save that link
+    """
+    # Open a webpage
+    resp = requests.get("https://www.example.com")
+
+    # Parse out the links content
+    bs = BeautifulSoup(resp.content, "lxml")
+    href = bs.select("div > p > a")[0]['href']
+
+    # Save the linked page
+    with open(os.path.join(output_dir, "output.html"), "wb") as out:
+        out.write(requests.get(href).content)
+    """
 
     ##########################################
     ## Full browser scraping using Selenium ##
     ##########################################
-    # open a webpage
-    # wait for the page to load
-    # click on a link via css selector
-    # wait for the page to load
-    # save that loaded page
+    """
+    # Open a webpage using Firefox (default) or Chrome (uncomment to use)
+    driver = webdriver.Firefox() # needs geckodriver in PATH
+    #driver = webdriver.Chrome() # needs chromedriver in PATH
+    driver.get("https://www.example.com/")
 
-    ###################
-    ## Dump pdf text ##
-    ###################
-    # open a pdf
+    # Wait for the link to load
+    link_selector = "div > p > a"
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, link_selector)))
+
+    # Click on a link via css selector
+    driver.find_elements_by_css_selector(link_selector)[0].click()
+
+    # Wait for the new page to load
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#header")))
+
+    # Save the page source
+    with open(os.path.join(output_dir, "output.html"), "wb") as out:
+        out.write(driver.page_source.encode("utf-8"))
+
+    # Close the browser
+    driver.quit()
+    """
 
     print("Done!")
 
 if __name__ == '__main__':
     import argparse
-    parser = argparse.ArgumentParser(description=manpage)
-    parser.add_argument('--output', '-o',
-                        default=DEFAULT_OUTPUT_DIR,
-                        help='output directory (default: "{}")'.format(DEFAULT_OUTPUT_DIR))
+    parser = argparse.ArgumentParser(description="""
+This is diafygi's scraping script for the 2017 DataRescueSFBay event.
+Example Usage: python3 scrape.py --output ../data/
+""")
+    parser.add_argument('--output', required=True, help='output directory')
     args = parser.parse_args()
-    main(output_dir=args.output)
+    main(args.output)
 
