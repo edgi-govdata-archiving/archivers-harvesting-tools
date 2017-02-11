@@ -27,17 +27,20 @@ zip -r output.zip /path/to/dir
 
 * Upload to http://www.archivers.space/
 
-## [TODO] How to upload to S3 via token
+## How to upload to S3 via command line
 
-This is useful if you have the zip file on a server and want to upload it
-directly from that server (so you don't have to download it to your local
-and upload it via the web interface).
+* Get temporary S3 credentials and upload path from http://www.archivers.space/
 
-* **[TODO]** Get an S3 access token from http://www.archivers.space/
-
-* **[TODO]** Upload to S3
+* Export the AWS credentials
 ```
-python3 uploader.py "S3_TOKEN_HERE" output.zip
+export AWS_ACCESS_KEY_ID=AAAAAA
+export AWS_SECRET_ACCESS_KEY=BBBBBBBB
+export AWS_SESSION_TOKEN=CCCCCCCCC
+````
+
+* Upload to S3 (`aws` should already be installed from the `requirements.txt`)
+```
+aws s3 cp output.zip s3://drp-upload/remote/68D7CFD9-F816-4601-8244-20A3BF44B50D.zip --region us-east-1
 ```
 
 ## How to get Selenium working
