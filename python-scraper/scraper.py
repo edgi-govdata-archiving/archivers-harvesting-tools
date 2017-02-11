@@ -6,13 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Erase the below and write a short summary of what you're scraping
-description = """
-Description:
-Download all the presentations for the 2015 AMS 95TH ANNUAL MEETING
-http://www.goes-r.gov/users/2015-01-ams.html
-"""
-
 def main(output_dir):
     """
     This is where you write your scraping scripts. Belowe are some commented
@@ -69,7 +62,7 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description="""
 This is diafygi's scraping script for the 2017 DataRescueSFBay event.
-Example Usage: python3 scrape.py --output ../data/
+Example Usage: python3 scraper.py --output ../data/
 """)
     parser.add_argument('--output', required=True, help='output directory')
     args = parser.parse_args()

@@ -1,15 +1,15 @@
-# Diafygi's python scraper
+# Python scraper
 
 This is [diafygi](https://github.com/diafygi)'s scraping script for the
 [2017 DataRescueSFBay event](https://github.com/DataRescueSFBay/DataRescueSFBay-Event).
 
-There's a bunch of commented out sections that have example scripts to get
+There's several commented out sections that have example scripts to get
 started for various types of situations. Just uncomment the section that
 you need and start coding!
 
 ## How to use
 
-* Install the dependencies (recommended to use a virtualenv).
+* Install the dependencies (recommended to use a python3 virtualenv).
 ```
 pip install -r requirements.txt
 ```
@@ -21,10 +21,17 @@ python3 scraper.py --output ../../data/
 ```
 
 * Zip up the results folder
+```
+zip -r output.zip /path/to/dir
+```
 
 * Upload to http://www.archivers.space/
 
-## [TODO] How to upload via S3
+## [TODO] How to upload to S3 via token
+
+This is useful if you have the zip file on a server and want to upload it
+directly from that server (so you don't have to download it to your local
+and upload it via the web interface).
 
 * **[TODO]** Get an S3 access token from http://www.archivers.space/
 
