@@ -4,7 +4,7 @@
 
 *Author*:       [Michael Hucka](http://www.cds.caltech.edu/~mhucka)
 
-*Repository*:   [https://github.com/datarefugephilly/workflow/harvesting-toolkit/tools/url-check](https://github.com/datarefugephilly/workflow/harvesting-toolkit/tools/url-check)
+*Repository*: [https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/url-check](https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/url-check)
 
 *Version*:      1.0
 
@@ -28,7 +28,7 @@ Usage
 `check-ia` can take a file containing a list of URLs, or it can check URLs given as arguments on the command line.  The simplest usage is
 
 ```csh
-check-ia URL 
+check-ia URL
 ```
 
 Alternatively, it can take any of several command line arguments:
