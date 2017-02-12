@@ -1,64 +1,56 @@
 import os
 import logging
 import requests
+from log import initLogger
 
-logging.getLogger("requests").setLevel(logging.WARNING)
-logger = logging.getLogger("archiver")
-logger.setLevel(logging.INFO)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(levelname)s %(asctime)-15s %(filename)s(%(lineno)d) %(message)s")
+logger = initLogger("archiver.py")
 
-ef_service_url = "http://iaspub.epa.gov/enviro/efservice"
-archive_dir = "epa_gov_enviro_facts_archive"
+efservice_url = "http://iaspub.epa.gov/enviro/efservice"
 csv_url = "{}/{}/ROWS/{}/CSV"
+archive_dir = "epa_gov_enviro_facts_archive"
 
+def mkdir(path):
+    if not os.path.isdir(path):
+        os.mkdir(path)
+        logger.info("Created dir: %s", path)
 
-def _setup(f):
-
+def setup(f):
     def wrapper(*args, **kwargs):
-        if not os.path.isdir(archive_dir):
-            os.mkdir(archive_dir)
+        mkdir(archive_dir)
         r = f(*args, **kwargs)
         return r
-
     return wrapper
 
-
-def _create_table_dir(f):
-
+def create_table_dir(f):
     def wrapper(*args, **kwargs):
         table = args[0]
         dir_name = "{}/{}".format(archive_dir, table)
-        if not os.path.isdir(dir_name):
-            os.mkdir(dir_name)
-            logger.info("Created dir: %s", dir_name)
+        mkdir(dir_name)
         r = f(*args, **kwargs)
         return r
-
     return wrapper
 
-def _has_rows(r):
+def has_rows(r):
     count = 0
-    rows = False
+    result = False
     for a in r.iter_lines():
         count += 1
-        if count > 2:
-            rows = True
+        if count > 1:
+            result = True
             break
-    return rows
+    return result
 
-@_create_table_dir
-def _download(table):
+@create_table_dir
+def download(table):
     start = 0
     end = batch_size = 10000
-    while 1:
+    while True:
         try:
             cursor_pos = "{}:{}".format(start, end)
-            url = csv_url.format(ef_service_url, table, cursor_pos)
+            url = csv_url.format(efservice_url, table, cursor_pos)
             req = requests.get(url)
             logger.info("Downloaded from: %s", url)
-            if not _has_rows(req):
+            if not has_rows(req):
                 logger.info("Table {} has no more rows".format(table))
                 break
             file_name = "{}/{}/{}_rows_{}_{}.csv".format(archive_dir, table,
@@ -73,8 +65,7 @@ def _download(table):
 
     logger.info("Done archiving table %s", table)
 
-
-@_setup
+@setup
 def archive(tables):
     """
     Main function to archive table using https://www.epa.gov/enviro/envirofacts-data-service-api
@@ -83,8 +74,8 @@ def archive(tables):
         tables = [tables]
 
     for table in tables:
-        _download(table)
-
+        download(table)
 
 if __name__ == '__main__':
+    #Example table_name
     archive(['ef_l_destruction_dev_details'])
