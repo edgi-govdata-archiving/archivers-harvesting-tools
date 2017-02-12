@@ -15,7 +15,11 @@ Installation and configuration
 
 This program is written in Python 3.  It offers a command-line interface.  It should run in any Python environment, although it has only been tested under Mac OS X 10.10 and CentOS Linux.
 
-This program depends on numerous Python modules; most should be normally found in a typical Python installation, but some may need to be installed specially from (e.g.) [PyPi](https://pypi.python.org) using whatever Python package installer you use for your environment.
+You can get dependencies from [PyPi](https://pypi.python.org).  Set up Python 3, `pip`, and ideally `virtualenv`.  Then install the dependencies listed in `requirements.txt` by:
+
+```python
+pip install -r requirements.txt
+```
 
 
 Usage
