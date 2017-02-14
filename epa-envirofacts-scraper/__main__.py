@@ -4,7 +4,7 @@ from submodules.archiver import archive
 from submodules.scraper import get_table_names
 from submodules.log import initLogger
 
-logger = initLogger("main.py")
+logger = initLogger("__main__.py")
 
 def main():
     parser = argparse.ArgumentParser()
