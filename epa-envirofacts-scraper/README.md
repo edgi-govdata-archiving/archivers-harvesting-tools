@@ -1,4 +1,10 @@
-# Scraping tool for Envirofacts
+# Usage
+
+This module can be used to scrape the Envirofacts database for all consistently maintained datatables. It takes a single optional argument to direct output to a specified directory.
+
+`python epa-envirofacts-scraper -o ./downloaded-data`
+
+## Scraping tool for Envirofacts
 
 Envirofacts is a unified system for accessing geographically relevant environmental data from a variety of differ
 ent data sources. It provides a single API to access many different data models. This tool is to collect as much of that data as possible.
@@ -11,7 +17,7 @@ Some useful links:
 
 ## Downloaded file directory structure
 
-Due to a server-side restriction, we can only download 10,0000 rows of data per request. For this reason, the data is paginated into .csv files with 10,0000 rows of data each. Table headers are repeated in each file. 
+Due to a server-side restriction, we can only download 10,0000 rows of data per request. For this reason, the data is paginated into .csv files with 10,0000 rows of data each. Table headers are repeated in each file.
 
 A new folder is created for each table and populated with .csv files as follows:
 
@@ -28,7 +34,7 @@ A new folder is created for each table and populated with .csv files as follows:
 
 ## Server-side request limit
 
-On occasion, we have witnessed requests denied by the server. This is likely due to server settings to combat DDOS attacks. For this reason, it may be necessary to insert some lag time in between successive requests. 
+On occasion, we have witnessed requests denied by the server. This is likely due to server settings to combat DDOS attacks. For this reason, it may be necessary to insert some lag time in between successive requests.
 
 
 ## Models not included
