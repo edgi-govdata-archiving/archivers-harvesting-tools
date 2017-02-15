@@ -76,8 +76,8 @@ def get_table_names():
 
     for model_url in model_urls:
         logger.info('Pulling tables for model: {}'.format(model_url))
-        for t_url, t_name, alt, s_url in get_tables_from_model_url(model_url):
-            yield t_name
+        for scraped_table_dict in get_tables_from_model_url(model_url):
+            yield scraped_table_dict['table_name']
 
 
 if __name__ == '__main__':

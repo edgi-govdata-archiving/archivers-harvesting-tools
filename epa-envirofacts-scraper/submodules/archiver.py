@@ -23,7 +23,6 @@ def _setup(f):
     def wrapper(*args, **kwargs):
         _mkdir(os.path.realpath(kwargs.get('data_dir', default_dir)))
         return f(*args, **kwargs)
-
     return wrapper
 
 
@@ -33,7 +32,6 @@ def _create_table_dir(f):
             kwargs.get('data_dir', default_dir),
             kwargs.get('table_name', 'no_table_name')))
         return f(*args, **kwargs)
-
     return wrapper
 
 
@@ -72,7 +70,7 @@ def _download(table_name=None, data_dir=None, start=0, batch_size=10000, **kwarg
                 f.write(req.text)
                 logger.info("Saved %s", file_name)
 
-            start += batch_size + 1
+            start += batch_size
 
         except Exception as e:
             logger.error("Failed to archive data from {}\n{}".format(url, e))
