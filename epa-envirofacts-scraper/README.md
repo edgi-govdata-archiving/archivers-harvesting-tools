@@ -19,18 +19,21 @@ Some useful links:
 
 Due to a server-side restriction, we can only download 10,0000 rows of data per request. For this reason, the data is paginated into .csv files with 10,0000 rows of data each. Table headers are repeated in each file.
 
-A new folder is created for each table and populated with .csv files as follows:
+Within the downloaded-data subdirectory, a new folder is created for each table and populated with .csv files as follows:
 
 ```
-+-- table_foo
-|   +-- table_foo_00000_10000.csv
-|   +-- table_foo_10000_20000.csv
-|   +-- ...
-+-- table_bar
-|   +-- table_bar_00000_10000.csv
-|   +-- table_foo_10000_20000.csv
++-- downloaded-data
+|   +-- table_foo
+|   |   +-- table_foo_rows_0_9999.csv
+|   |   +-- table_foo_rows_10000_19999.csv
+|   |   +-- (etc.)
+|   +-- table_bar
+|   |   +-- table_bar_rows_0_9999.csv
+|   |   +-- table_bar_rows_10000_19999.csv
+|   |   +-- (etc.)
 ```
 
+where table_foo and table_bar and surrogates for table names extracted by the script.
 
 ## Server-side request limit
 
