@@ -1,17 +1,19 @@
 # Harvesting Tools
 
-A collection of code snippets mostly designed to be dropped into the data harvesting process directly after generating the zip starter kit. We welcome tools written in any language! Especially if they cover use cases we haven't described. To add a new tool to this repository please review our [Contributing Guidelines](./CONTRIBUTING.md)
+A collection of scripts and code snippets for data harvesting after generating the zip starter. 
+
+We welcome tools written in any language! Especially if they cover use cases we haven't described. To add a new tool to this repository please review our [Contributing Guidelines](./CONTRIBUTING.md)
 
 ## Usage
 
-- Familiarize yourself with the [harvesting instructions](https://github.com/datarefugephilly/workflow/tree/master/harvesting-toolkit) in the Data Rescue workflow repo.  Within the [pipeline app](http://harvest-pipeline.herokuapp.com/), click `Download Zip Starter` from the page related to a URL that you have checked out.
-- unzip the zipfile
+- Familiarize yourself with the [harvesting instructions](https://datarefuge.github.io/workflow/harvesting/) in the DataRescue workflow repo.  Within the [Archivers app](https://www.archivers.space/), click `Download Zip Starter` from the detail page related to a URL you have checked out
+- Unzip the zip stater file
 - Choose a tool that seems likely to be helpful in capturing this particular resource, and copy the contents of its directory in this repo to the `tools` directory, e.g. with:
   ```
   cp -r harvesting-tools/TOOLNAME/* RESOURCEUUID/tools/
   ```
-- Adjust the base URL for the resource along with any other relevant variables, and tweak the content of the tool as necessary
-- After the resource has been harvested, proceed with the further steps in the [workflow](https://github.com/datarefugephilly/workflow/).
+- Adjust the base URL for the dataset, along with any other relevant variables, and tweak the content of the tool as necessary
+- After the dataset has been harvested, proceed with the further steps in the [harvesting instructions](https://datarefuge.github.io/workflow/harvesting/)
 
 ## Matching Tools and Datasets
 
@@ -41,10 +43,12 @@ The last resort of harvesting should be to drive it with a full web browser. It 
 
 For search results from large document sets, you may need to do more sophisticated "scraping" and "crawling" -- check out tools built at previous events such as the [EIS WARC archiver](https://github.com/edgi-govdata-archiving/eis-WARC-archiver) or the [EPA Search Utils](https://github.com/edgi-govdata-archiving/epa-search-utils) for ideas on how to proceed.
 
+### API scrape / Custom Solution
+
+If you encounter an API, chances are you'll have to build some sort of custom solution, like [epa-envirofacts-scraper](https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/epa-envirofacts-scraper) or investigate a social angle. For example: asking someone with greater access for a database dump. Be sure to include your code in the `tools` directory of your zipfile, and if there is any likelihood of general application, please add to this repo.
+
 ### [Explore Other Tools](./utils)
 
 the `utils` directory is for scripts that have been useful in the past but may not have very general application. But you still might find something youu like!
 
-### API scrape / Custom Solution
 
-If you encounter an API, chances are you'll have to build some sort of custom solution, or investigate a social angle. For example: asking someone with greater access for a database dump. Be sure to include your ocode in the `tools` directory of your zipfile, and if there is any likelihood of general application, please add to this repo.
