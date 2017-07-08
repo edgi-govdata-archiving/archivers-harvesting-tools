@@ -247,3 +247,11 @@ def cli_interface():
     plac.call(main)
 
 cli_interface()
+
+
+# For Emacs users
+# ......................................................................
+# Local Variables:
+# mode: python
+# python-indent-offset: 4
+# End:
