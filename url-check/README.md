@@ -7,7 +7,7 @@ check-ia
 
 *Repository*: [https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/url-check](https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/url-check)
 
-*Version*:      1.0
+*Version*:      1.1
 
 ----
 

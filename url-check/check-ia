@@ -21,7 +21,7 @@ Wayback Machine API description: https://archive.org/help/wayback_api.php
 
 '''
 
-__version__ = '1.0'
+__version__ = '1.1'
 __author__  = 'Michael Hucka <mhucka@caltech.edu>'
 __email__   = 'mhucka@caltech.edu'
 __license__ = 'Public domain'
