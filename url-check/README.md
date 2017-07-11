@@ -1,4 +1,5 @@
-#check-ia
+check-ia
+========
 
 `check-ia` check if given URLs have been archived in the [Internet Archive](https://archive.org).  It uses the Wayback Machine's [network API](https://archive.org/help/wayback_api.php) to perform the checks.
 
@@ -6,7 +7,7 @@
 
 *Repository*: [https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/url-check](https://github.com/edgi-govdata-archiving/harvesting-tools/tree/master/url-check)
 
-*Version*:      1.0
+*Version*:      1.1
 
 ----
 
